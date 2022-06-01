@@ -1,5 +1,3 @@
 #!/usr/bin/python3
-i = 97
-while i < (ord('z') + 1):
-    print(chr(i), end="")
-    i += 1
+for alphabet in range(ord('a'), ord('z') + 1):
+    print("{}".format(chr(alphabet)), end="")
