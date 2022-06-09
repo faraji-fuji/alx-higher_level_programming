@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    if (a_dictionary):
-        key_list = sorted(a_dictionary)
-        return key_list[-1]
-    else:
+    if not a_dictionary:
         return None
+    biggest = 0
+    for key, value in a_dictionary.items():
+        if value > biggest:
+            biggest = value
+    for key, value in a_dictionary.items():
+        if value == biggest:
+            return key
