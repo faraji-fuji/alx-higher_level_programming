@@ -1,56 +1,64 @@
 #!/usr/bin/python3
+""" Write a class Square that defines a square """
+
+
 class Square:
+    """ Defines a Square.
+
+    Attributes:
+        __size (int): Size of square.
+
+    """
     def __init__(self, size=0, position=(0, 0)):
+        """ Assign attributes with the args passed
+
+        Args:
+            size (int): size of square
+            position (obj): 2 positiv integers
+
+        """
         self.size = size
         self.position = position
 
-    # Size property
     @property
     def size(self):
         return self.__size
 
-    # Size setter modifies
     @size.setter
-    def size(self, value):
-        if type(value) != int:
-            raise TypeError('size must be an integer')
-        elif value < 0:
-            raise ValueError('size must be >= 0')
-        else:
-            self.__size = value
+    def size(self, size):
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
 
-    # Position property
     @property
     def position(self):
         return self.__position
 
-    # Position setter modifies
     @position.setter
-    def position(self, value):
-        message = 'position must be a tuple of 2 positive integers'
-        if type(value) != tuple or len(value) != 2:
-            raise TypeError(message)
+    def position(self, position):
+        msg = "position must be a tuple of 2 positive integers"
+        if len(position) != 2:
+            raise TypeError(msg)
+        for i in position:
+            if not isinstance(i, int) or i < 0:
+                raise TypeError(msg)
+        self.__position = position
 
-        for items in value:
-            if type(items) != int or items < 0:
-                raise TypeError(message)
-
-        self.__position = value
-
-    # Functions
     def area(self):
-        return self.__size ** 2
+        """Returns Square's area"""
+        return (self.__size * self.__size)
 
     def my_print(self):
-        size = self.__size
-        nl = self.__position[1]
-        ws = self.__position[0]
-
-        if size == 0:
-            print()
-
-        for newlines in range(nl):
-            print()
-
-        for row in range(size):
-            print((' ' * ws) + ('#' * size))
+        if self.__size == 0:
+            print("")
+        else:
+            for bl in range(self.__position[1]):
+                print("")
+            for i in range(self.__size):
+                for l in range(self.__position[0]):
+                    print(" ", end="")
+                for j in range(self.__size):
+                    print("#", end="")
+                print("")
