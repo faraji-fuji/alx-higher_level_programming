@@ -1,0 +1,45 @@
+``0-add_integer`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+``add_integer()`` adds two integers or floats. Floats are converted to integers
+before operation
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Test numbers
+
+    >>> add_integer(2)
+    100
+
+    >>> add_integer(6, 4)
+    10
+
+    >>> add_integer(6, -3)
+    3
+
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    >>> add_integer(10, "Hi")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    >>> add_integer(10, (2, 4))
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    >>> add_integer("hello", "world")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+Test floats
+
+     >>> add_integer(9.6777, 1)
+     10
+
+     >>> add_integer(10, 4.88888)
+     14
